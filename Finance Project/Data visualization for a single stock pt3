@@ -1,0 +1,9 @@
+! pip install cufflinks
+import cufflinks as cf
+cf.go_offline() # Enabling offline mode for interactive data visualization locally
+stock_df
+stock_df.set_index(['Date'], inplace = True)
+stock_df
+figure = cf.QuantFig(stock_df, title = 'Amazon.com, Inc. (AMZN) Candlestick Chart', name = 'AMZN')
+figure.add_sma(periods =[14, 21], column = 'Close', color = ['magenta', 'green'])
+figure.iplot(theme = 'white', up_color = 'green', down_color = 'red')
