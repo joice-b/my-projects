@@ -1,3 +1,2 @@
 # my-statistical-analyses
-The Repo is based on the various Statistical analyses that I have done. It includes linear regression, hypothesis testing, matrix algebra, data visualization and so on. Majority of these are done using R. Analyses and projects using Python are in progress and will be uploaded once finished.
-Projects/analyses done using Python are underway and will be updated by 18th November
+The Repo is based on the various Statistical analyses and a financial markets project that I have done. It includes linear regression, hypothesis testing, matrix algebra, data visualization and so on in the statistical analysis side(majority of these are done using R). The Financial markets project consists of monte carlo simulation, optimization, data visualization, generating random weights for components of a portfolio and so on(project done in Python).
