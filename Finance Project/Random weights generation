@@ -1,0 +1,14 @@
+import random
+
+def generate_portfolio_weights(n):
+    weights = []
+    for i in range(n):
+        weights.append(random.random())
+        
+    # let's make the sum of all weights add up to 1
+    weights = weights/np.sum(weights)
+    return weights
+
+# Call the function (Run this cell multiple times to generate different outputs)
+weights = generate_portfolio_weights(4)
+print(weights)
