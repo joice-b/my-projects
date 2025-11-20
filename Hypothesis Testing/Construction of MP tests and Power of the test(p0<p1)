@@ -1,0 +1,13 @@
+#here,p0<p1
+a=c(1,0,1,1,1,1,0,1,0,1,1,1)
+ma=mean(a)
+x=0:12
+p=dbinom(x,12,0.32);p
+q=pbinom(x,12,0.32);q
+data.frame(x,p,q)
+g=(0.997191961-0.99)/0.011636990;g
+
+x=0:12
+p=dbinom(x,12,0.68);p
+q=pbinom(x,12,0.68);q
+data.frame(x,p,q)
