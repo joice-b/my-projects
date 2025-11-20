@@ -1,0 +1,5 @@
+b=c(1,1.3,0.8,0.2,2.3,1.7,1.9,1.6,1.1,0.7)
+sd=1.2
+chis= 9*(var(b))/(sd^2);chis
+lower=qchisq(0.05,9);lower
+upper=qchisq(0.95,9);upper
