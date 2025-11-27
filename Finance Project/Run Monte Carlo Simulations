@@ -1,0 +1,14 @@
+sim_runs = 10000
+initial_investment = 1000000
+sharpe_ratio_runs = np.zeros(sim_runs)
+expected_portfolio_returns_runs = np.zeros(sim_runs)
+volatility_runs = np.zeros(sim_runs)
+return_on_investment_runs = np.zeros(sim_runs)
+final_value_runs = np.zeros(sim_runs)
+for i in range(sim_runs):
+    weights = generate_portfolio_weights(n)
+    weights_runs[i,:] = weights  
+    expected_portfolio_returns_runs[i], volatility_runs[i], sharpe_ratio_runs[i], final_value_runs[i], return_on_investment_runs[i] = simulation_engine(weights, initial_investment)
+    print("Simulation Run = {}".format(i))   
+    print("Weights = {}, Final Value = ${:.2f}, Sharpe Ratio = {:.2f}".format(weights_runs[i].round(3), final_value_runs[i], sharpe_ratio_runs[i]))   
+    print('\n')
