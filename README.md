@@ -1,2 +1,2 @@
-# my-statistical-analyses
-The Repo is based on the various a financial markets project and statistical analyses that I have done.  The Financial markets project consists of monte carlo simulation, portfolio optimization, data visualization, generating random weights for components of a portfolio and so on(project done in Python). The statistical analyses includes linear regression, hypothesis testing, matrix algebra, data visualization and so on(done using R).
+# my-projects
+The Repo is based on a financial markets project and various statistical analyses that I have done.  The Financial markets project consists of monte carlo simulation, portfolio optimization, data visualization, generating random weights for components of a portfolio and so on(project done in Python). The Statistical analyses includes linear regression, hypothesis testing, matrix algebra, data visualization and so on(done using R).
