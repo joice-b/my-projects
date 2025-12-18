@@ -1,0 +1,50 @@
+import numpy as np
+from scipy.stats import norm
+
+class OptionPricer:
+    def __init__(self, S, K, T, r, sigma):
+        self.S = float(S)        # spot price
+        self.K = float(K)        # strike price
+        self.T = float(T)        # time to maturity(years)
+        self.r = float(r)        # risk-free rate
+        self.sigma = float(sigma) # Volatility
+
+    def black_scholes(self, option_type='Call'):
+        d1 = (np.log(self.S / self.K) + (self.r + 0.5 * (self.sigma ** 2)) * self.T) / (self.sigma * np.sqrt(self.T))
+        d2 = d1 - self.sigma * np.sqrt(self.T)
+        if option_type == 'Call':
+            price = self.S * norm.cdf(d1) - self.K * np.exp(-self.r * self.T) * norm.cdf(d2)
+        else:
+            price = self.K * np.exp(-self.r * self.T) * norm.cdf(-d2) - self.S * norm.cdf(-d1)
+        return price
+
+    def monte_carlo(self, simulations=100000, option_type='Call'):
+        np.random.seed(55)
+        z = np.random.standard_normal(simulations)
+        ST = self.S * np.exp((self.r - 0.5 * (self.sigma ** 2)) * self.T + self.sigma * np.sqrt(self.T) * z) #price at time t
+        if option_type == 'Call':
+            payoffs = np.maximum(ST - self.K, 0)
+        else:
+            payoffs = np.maximum(self.K - ST, 0)            
+        #discount back to present value
+        return np.exp(-self.r * self.T) * np.mean(payoffs)
+
+if __name__ == "__main__":
+    #input values 
+    S = 100    
+    K = 100   
+    T = 1.0   
+    r = 0.05 
+    sigma = 0.2
+    my_pricer = OptionPricer(S, K, T, r, sigma)
+    # store results of both methods
+    bs_call = my_pricer.black_scholes(option_type='Call')
+    mc_call = my_pricer.monte_carlo(simulations=100000, option_type='Call')
+    # output
+    print("-" * 30)
+    print(f"Pricing inputs: S={S}, K={K}, T={T}, r={r}, sigma={sigma}")
+    print("-" * 30)
+    print(f"Black-Scholes Price: ${bs_call:.4f}")
+    print(f"Monte Carlo Price:   ${mc_call:.4f}")
+    print(f"Difference:          ${abs(bs_call - mc_call):.6f}")
+    print("-" * 30)
